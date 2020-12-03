@@ -93,10 +93,6 @@ const struct testvector testdata[] =
     { "iaudiox5.v",       ServerInfo::BleedingRevision,    "be1be79" },
     { "iaudiox5.v",       ServerInfo::BleedingDate,        "2020-11-14T10:57:23" },
     { "iaudiox5.v",       ServerInfo::CurDevelUrl,         "https://unittest/dev/rockbox-iaudiox5.zip" },
-    { "iaudiox5.v",       ServerInfo::ManualPdfUrl,        "https://unittest/manual/rockbox-iaudiox5.pdf" },
-    { "ipodmini2g",       ServerInfo::ManualPdfUrl,        "https://unittest/manual/rockbox-ipodmini1g.pdf" },
-    { "iriverh100",       ServerInfo::ManualHtmlUrl,       "https://unittest/manual/rockbox-iriverh100/rockbox-build.html" },
-    { "iriverh120",       ServerInfo::ManualZipUrl,        "https://unittest/manual/rockbox-iriverh100-html.zip" },
 };
 
 
@@ -110,11 +106,11 @@ void TestServerInfo::testMain()
     tf.write(testinfo);
     tf.close();
 
-    ServerInfo::readBuildInfo(filename);
+    ServerInfo::instance()->readBuildInfo(filename);
 
     unsigned int i;
     for(i = 0; i < sizeof(testdata) / sizeof(struct testvector); i++) {
-        QString result = ServerInfo::platformValue(testdata[i].entry, testdata[i].target).toString();
+        QString result = ServerInfo::instance()->platformValue(testdata[i].entry, testdata[i].target).toString();
         QCOMPARE(result, QString(testdata[i].expected));
     }
 }

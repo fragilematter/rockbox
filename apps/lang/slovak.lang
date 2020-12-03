@@ -768,15 +768,15 @@
   user: core
   <source>
     *: none
-    recording_swcodec: "Mono Left + Right"
+    recording: "Mono Left + Right"
   </source>
   <dest>
     *: none
-    recording_swcodec: "Mono Ľavý + Pravý"
+    recording: "Mono Ľavý + Pravý"
   </dest>
   <voice>
     *: none
-    recording_swcodec: "Mono Ľavý plus Pravý"
+    recording: "Mono Ľavý plus Pravý"
   </voice>
 </phrase>
 <phrase>
@@ -4997,15 +4997,15 @@
   user: core
   <source>
     *: none
-    recording_swcodec: "WavPack"
+    recording: "WavPack"
   </source>
   <dest>
     *: none
-    recording_swcodec: "WavPack"
+    recording: "WavPack"
   </dest>
   <voice>
     *: none
-    recording_swcodec: "WavPack"
+    recording: "WavPack"
   </voice>
 </phrase>
 <phrase>
@@ -5048,15 +5048,15 @@
   user: core
   <source>
     *: none
-    recording_swcodec: "Bitrate"
+    recording: "Bitrate"
   </source>
   <dest>
     *: none
-    recording_swcodec: "Počet Bitov"
+    recording: "Počet Bitov"
   </dest>
   <voice>
     *: none
-    recording_swcodec: "Počet bitov"
+    recording: "Počet bitov"
   </voice>
 </phrase>
 <phrase>
@@ -9991,15 +9991,15 @@
   user: core
   <source>
     *: none
-    recording_swcodec: "Mono mode"
+    recording: "Mono mode"
   </source>
   <dest>
     *: none
-    recording_swcodec: "Režim Mono"
+    recording: "Režim Mono"
   </dest>
   <voice>
     *: none
-    recording_swcodec: "Režim mono"
+    recording: "Režim mono"
   </voice>
 </phrase>
 <phrase>
@@ -12158,16 +12158,13 @@
   desc: in Settings -> General -> System -> USB Mode
   user: core
   <source>
-    *: none
-    ibassodx50,ibassodx90: "USB Mode"
+    *: "USB Mode"
   </source>
   <dest>
-    *: none
-    ibassodx50,ibassodx90: "Režim USB"
+    *: "Režim USB"
   </dest>
   <voice>
-    *: none
-    ibassodx50,ibassodx90: "Režim USB"
+    *: "Režim USB"
   </voice>
 </phrase>
 <phrase>
@@ -12192,16 +12189,13 @@
   desc: in Settings -> General -> System -> USB Mode: Android Debug Bridge
   user: core
   <source>
-    *: none
-    ibassodx50,ibassodx90: "Android Debug Bridge"
+    *: "Android Debug Bridge"
   </source>
   <dest>
-    *: none
-    ibassodx50,ibassodx90: "Android Debug Bridge"
+    *: "Android Debug Bridge"
   </dest>
   <voice>
-    *: none
-    ibassodx50,ibassodx90: "Android Debug Bridge"
+    *: "Android Debug Bridge"
   </voice>
 </phrase>
 <phrase>
@@ -12209,16 +12203,13 @@
   desc: in Settings -> General -> System -> USB Mode: Mass Storage
   user: core
   <source>
-    *: none
-    ibassodx50,ibassodx90: "Mass Storage"
+    *: "Mass Storage"
   </source>
   <dest>
-    *: none
-    ibassodx50,ibassodx90: "úložisko"
+    *: "úložisko"
   </dest>
   <voice>
-    *: none
-    ibassodx50,ibassodx90: "úložisko"
+    *: "úložisko"
   </voice>
 </phrase>
 <phrase>
@@ -12240,17 +12231,13 @@
   desc: in Settings -> General -> System -> USB Mode: Charge Only
   user: core
   <source>
-    *: none
-    ibassodx50,ibassodx90: "Charge Only"
+    *: "Charge Only"
   </source>
   <dest>
-    *: none
-    ibassodx50: "Iba nabíjanie"
-    ibassodx90: "Iba Nabíjanie"
+    *: "Iba Nabíjanie"
   </dest>
   <voice>
-    *: none
-    ibassodx50,ibassodx90: "Iba nabíjanie"
+    *: "Iba nabíjanie"
   </voice>
 </phrase>
 <phrase>

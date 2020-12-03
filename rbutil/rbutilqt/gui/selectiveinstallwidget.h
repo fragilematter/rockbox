@@ -24,12 +24,13 @@
 #include "progressloggergui.h"
 #include "zipinstaller.h"
 #include "themesinstallwindow.h"
+#include "systeminfo.h"
 
 class SelectiveInstallWidget : public QWidget
 {
     Q_OBJECT
     public:
-        SelectiveInstallWidget(QWidget* parent = 0);
+        SelectiveInstallWidget(QWidget* parent = nullptr);
 
     public slots:
         void updateVersion(void);
@@ -38,14 +39,18 @@ class SelectiveInstallWidget : public QWidget
 
     private slots:
         void continueInstall(bool);
+        void customizeThemes(void);
+        void selectedVersionChanged(int);
+
+    private:
         void installBootloader(void);
         void installRockbox(void);
         void installFonts(void);
+        void installVoicefile(void);
+        void installManual(void);
         void installThemes(void);
         void installGamefiles(void);
         void installBootloaderPost(void);
-        void customizeThemes(void);
-        void selectedVersionChanged(int);
 
     signals:
         void installSkipped(bool);
@@ -60,8 +65,9 @@ class SelectiveInstallWidget : public QWidget
         ProgressLoggerGui *m_logger;
         int m_installStage;
         ZipInstaller *m_zipinstaller;
-        QMap<QString, QString> m_versions;
+        QMap<SystemInfo::BuildType, QString> m_versions;
         ThemesInstallWindow *m_themesinstaller;
+        SystemInfo::BuildType m_buildtype;
 };
 
 #endif

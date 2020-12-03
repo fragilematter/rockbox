@@ -5,8 +5,9 @@
  *   Jukebox    |    |   (  <_> )  \___|    < | \_\ (  <_> > <  <
  *   Firmware   |____|_  /\____/ \___  >__|_ \|___  /\____/__/\_ \
  *                     \/            \/     \/    \/            \/
+ * $Id$
  *
- *   Copyright (C) 2007 by Dominik Riebeling
+ * Copyright (C) 2020 James Buren
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,34 +18,24 @@
  * KIND, either express or implied.
  *
  ****************************************************************************/
+#include <stdint.h>
+#include <stdbool.h>
 
-#ifndef SYSINFO_H
-#define SYSINFO_H
+#ifndef _CHECKSUM_H
+#define _CHECKSUM_H
 
-#include <QDialog>
-#include <QWidget>
-#include "ui_sysinfofrm.h"
-
-class Sysinfo : public QDialog
+/* rockbox firmware checksum algorithm */
+static inline uint32_t calc_checksum(uint32_t sum, const uint8_t* buf, size_t len)
 {
-    Q_OBJECT
+    for (size_t i = 0; i < len; i++)
+        sum += buf[i];
+    return sum;
+}
 
-    public:
-        enum InfoType {
-            InfoHtml,
-            InfoText,
-        };
-        Sysinfo(QWidget *parent = nullptr);
-
-        static QString getInfo(InfoType type = InfoHtml);
-    private:
-        void changeEvent(QEvent *event);
-        Ui::SysinfoFrm ui;
-
-    private slots:
-         void updateSysinfo(void);
-
-};
+/* similar to above but only used for verification */
+static inline bool verify_checksum(uint32_t cs, const uint8_t* buf, size_t len)
+{
+    return (calc_checksum(MODEL_NUMBER, buf, len) == cs);
+}
 
 #endif
-

@@ -171,7 +171,7 @@ void Config::accept()
         errormsg += "<li>" + tr("No mountpoint given") + "</li>";
         error = true;
     }
-    else if(!QFileInfo(mountpoint).exists()) {
+    else if(!QFileInfo::exists(mountpoint)) {
         errormsg += "<li>" + tr("Mountpoint does not exist") + "</li>";
         error = true;
     }
@@ -370,7 +370,7 @@ void Config::setDevices()
     QStringList brands = manuf.uniqueKeys();
     QTreeWidgetItem *w;
     QTreeWidgetItem *w2;
-    QTreeWidgetItem *w3 = 0;
+    QTreeWidgetItem *w3 = nullptr;
 
     QString selected = RbSettings::value(RbSettings::Platform).toString();
     for(int c = 0; c < brands.size(); c++) {
@@ -385,9 +385,8 @@ void Config::setDevices()
                 continue;
             // construct display name
             QString curname = SystemInfo::platformValue(
-                                SystemInfo::Name, platformList.at(it)).toString() +
-                " (" + ServerInfo::statusToString(ServerInfo::platformValue(
-                            ServerInfo::CurStatus, platformList.at(it)).toInt()) +")";
+                SystemInfo::Name, platformList.at(it)).toString()
+                + " (" + ServerInfo::instance()->statusAsString(platformList.at(it)) + ")";
             LOG_INFO() << "add supported device:" << brands.at(c) << curname;
             w2 = new QTreeWidgetItem(w, QStringList(curname));
             w2->setData(0, Qt::UserRole, platformList.at(it));
@@ -409,7 +408,7 @@ void Config::setDevices()
     while(widgetitem);
     // add new items
     ui.treeDevices->insertTopLevelItems(0, items);
-    if(w3 != 0) {
+    if(w3 != nullptr) {
         ui.treeDevices->setCurrentItem(w3); // hilight old selection
         ui.treeDevices->scrollToItem(w3);
     }
@@ -743,7 +742,7 @@ void Config::autodetect()
             }
             msg += QString("<li>%1</li>").arg(tr("%1 at %2").arg(
                         SystemInfo::platformValue(
-                            SystemInfo::PlatformName, detected.at(i).device).toString(),
+                            SystemInfo::Name, detected.at(i).device).toString(),
                         QDir::toNativeSeparators(mp)));
         }
         msg += "</ul>";
@@ -864,7 +863,7 @@ void Config::cacheClear()
     if(QMessageBox::critical(this, tr("Really delete cache?"),
        tr("Do you really want to delete the cache? "
          "Make absolutely sure this setting is correct as it will "
-         "remove <b>all</b> files in this folder!").arg(ui.cachePath->text()),
+         "remove <b>all</b> files in this folder!"),
        QMessageBox::Yes | QMessageBox::No) != QMessageBox::Yes)
         return;
 

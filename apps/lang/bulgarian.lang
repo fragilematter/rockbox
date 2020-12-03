@@ -777,15 +777,15 @@
   user: core
   <source>
     *: none
-    recording_swcodec: "Mono Left + Right"
+    recording: "Mono Left + Right"
   </source>
   <dest>
     *: none
-    recording_swcodec: "Моно Ляв + Десен"
+    recording: "Моно Ляв + Десен"
   </dest>
   <voice>
     *: none
-    recording_swcodec: "Моно Ляв + Десен"
+    recording: "Моно Ляв + Десен"
   </voice>
 </phrase>
 <phrase>
@@ -5324,15 +5324,15 @@
   user: core
   <source>
     *: none
-    recording_swcodec: "WavPack"
+    recording: "WavPack"
   </source>
   <dest>
     *: none
-    recording_swcodec: "WavPack"
+    recording: "WavPack"
   </dest>
   <voice>
     *: none
-    recording_swcodec: "WavPack"
+    recording: "WavPack"
   </voice>
 </phrase>
 <phrase>
@@ -5375,15 +5375,15 @@
   user: core
   <source>
     *: none
-    recording_swcodec: "Bitrate"
+    recording: "Bitrate"
   </source>
   <dest>
     *: none
-    recording_swcodec: "Побитова скорост"
+    recording: "Побитова скорост"
   </dest>
   <voice>
     *: none
-    recording_swcodec: "Побитова скорост"
+    recording: "Побитова скорост"
   </voice>
 </phrase>
 <phrase>
@@ -10703,15 +10703,15 @@
   user: core
   <source>
     *: none
-    recording_swcodec: "Mono mode"
+    recording: "Mono mode"
   </source>
   <dest>
     *: none
-    recording_swcodec: "Моно режим"
+    recording: "Моно режим"
   </dest>
   <voice>
     *: none
-    recording_swcodec: "Моно режим"
+    recording: "Моно режим"
   </voice>
 </phrase>
 <phrase>
@@ -12786,16 +12786,13 @@
   desc: in Settings -> General -> System -> USB Mode: Android Debug Bridge
   user: core
   <source>
-    *: none
-    ibassodx50,ibassodx90: "Android Debug Bridge"
+    *: "Android Debug Bridge"
   </source>
   <dest>
-    *: none
-    ibassodx50,ibassodx90: "Android Debug Bridge"
+    *: "Android Debug Bridge"
   </dest>
   <voice>
-    *: none
-    ibassodx50,ibassodx90: "Android Debug Bridge"
+    *: "Android Debug Bridge"
   </voice>
 </phrase>
 <phrase>
@@ -12845,16 +12842,13 @@
   desc: in Settings -> General -> System -> USB Mode: Charge Only
   user: core
   <source>
-    *: none
-    ibassodx50,ibassodx90: "Charge Only"
+    *: "Charge Only"
   </source>
   <dest>
-    *: none
-    ibassodx50,ibassodx90: "Само зареждане"
+    *: "Само зареждане"
   </dest>
   <voice>
-    *: none
-    ibassodx50,ibassodx90: "Само зареждане"
+    *: "Само зареждане"
   </voice>
 </phrase>
 <phrase>
@@ -12890,16 +12884,13 @@
   desc: in Settings -> General -> System -> USB Mode
   user: core
   <source>
-    *: none
-    ibassodx50,ibassodx90: "USB Mode"
+    *: "USB Mode"
   </source>
   <dest>
-    *: none
-    ibassodx50,ibassodx90: "USB Режим"
+    *: "USB Режим"
   </dest>
   <voice>
-    *: none
-    ibassodx50,ibassodx90: "Ю Ес Би Режим"
+    *: "Ю Ес Би Режим"
   </voice>
 </phrase>
 <phrase>
@@ -12924,16 +12915,13 @@
   desc: in Settings -> General -> System -> USB Mode: Mass Storage
   user: core
   <source>
-    *: none
-    ibassodx50,ibassodx90: "Mass Storage"
+    *: "Mass Storage"
   </source>
   <dest>
-    *: none
-    ibassodx50,ibassodx90: "Масова памет"
+    *: "Масова памет"
   </dest>
   <voice>
-    *: none
-    ibassodx50,ibassodx90: "Масова памет"
+    *: "Масова памет"
   </voice>
 </phrase>
 <phrase>

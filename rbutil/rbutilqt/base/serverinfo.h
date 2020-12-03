@@ -18,6 +18,9 @@
  *
  ****************************************************************************/
 
+// Parse and provide information from build server via build-info file.
+// This is a singleton.
+
 #ifndef SERVERINFO_H
 #define SERVERINFO_H
 
@@ -38,28 +41,29 @@ class ServerInfo : public QObject
             CurStatus,
             CurReleaseUrl,
             CurDevelUrl,
-            ManualPdfUrl,
-            ManualHtmlUrl,
-            ManualZipUrl,
             BleedingRevision,
             BleedingDate,
             RelCandidateVersion,
             RelCandidateUrl,
+            DailyVersion,
+            DailyUrl
         };
 
+        static ServerInfo* instance();
+
         //! read in buildinfo file
-        static void readBuildInfo(QString file);
+        void readBuildInfo(QString file);
         //! get a value from server info for a named platform.
-        static QVariant platformValue(enum ServerInfos setting, QString platform = "");
-        //! Convert status number to string
-        static QString statusToString(int status);
+        QVariant platformValue(enum ServerInfos setting, QString platform = "");
+        //! Get status number as string
+        QString statusAsString(QString platform = "");
+
+    protected:
+        ServerInfo() : serverSettings(nullptr) {}
 
     private:
-        //! you shouldnt call this, its a fully static class
-        ServerInfo() {}
-
-        //! map of server infos
-        static QMap<QString, QVariant> serverInfos;
+        static ServerInfo* infoInstance;
+        QSettings* serverSettings;
 
 };
 

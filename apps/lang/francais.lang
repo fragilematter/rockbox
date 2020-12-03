@@ -800,15 +800,15 @@
   user: core
   <source>
     *: none
-    recording_swcodec: "Mono Left + Right"
+    recording: "Mono Left + Right"
   </source>
   <dest>
     *: none
-    recording_swcodec: "Mono gauche + droit"
+    recording: "Mono gauche + droit"
   </dest>
   <voice>
     *: none
-    recording_swcodec: "Mono gauche plus droit"
+    recording: "Mono gauche plus droit"
   </voice>
 </phrase>
 <phrase>
@@ -5050,15 +5050,15 @@
   user: core
   <source>
     *: none
-    recording_swcodec: "WavPack"
+    recording: "WavPack"
   </source>
   <dest>
     *: none
-    recording_swcodec: "WavPack"
+    recording: "WavPack"
   </dest>
   <voice>
     *: none
-    recording_swcodec: "WavPack"
+    recording: "WavPack"
   </voice>
 </phrase>
 <phrase>
@@ -5101,15 +5101,15 @@
   user: core
   <source>
     *: none
-    recording_swcodec: "Bitrate"
+    recording: "Bitrate"
   </source>
   <dest>
     *: none
-    recording_swcodec: "Echantillonnage"
+    recording: "Echantillonnage"
   </dest>
   <voice>
     *: none
-    recording_swcodec: "échantillonnage"
+    recording: "échantillonnage"
   </voice>
 </phrase>
 <phrase>
@@ -9943,15 +9943,15 @@
   user: core
   <source>
     *: none
-    recording_swcodec: "Mono mode"
+    recording: "Mono mode"
   </source>
   <dest>
     *: none
-    recording_swcodec: "Mode mono"
+    recording: "Mode mono"
   </dest>
   <voice>
     *: none
-    recording_swcodec: "Mode mono"
+    recording: "Mode mono"
   </voice>
 </phrase>
 <phrase>
@@ -12038,16 +12038,13 @@
   desc: in Settings -> General -> System -> USB Mode: Mass Storage
   user: core
   <source>
-    *: none
-    ibassodx50,ibassodx90: "Mass Storage"
+    *: "Mass Storage"
   </source>
   <dest>
-    *: none
-    ibassodx50,ibassodx90: "Stockage de masse"
+    *: "Stockage de masse"
   </dest>
   <voice>
-    *: none
-    ibassodx50,ibassodx90: "Stockage de masse"
+    *: "Stockage de masse"
   </voice>
 </phrase>
 <phrase>
@@ -12215,16 +12212,13 @@
   desc: in Settings -> General -> System -> USB Mode: Charge Only
   user: core
   <source>
-    *: none
-    ibassodx50,ibassodx90: "Charge Only"
+    *: "Charge Only"
   </source>
   <dest>
-    *: none
-    ibassodx50,ibassodx90: "Charge seulement"
+    *: "Charge seulement"
   </dest>
   <voice>
-    *: none
-    ibassodx50,ibassodx90: "Charge seulement"
+    *: "Charge seulement"
   </voice>
 </phrase>
 <phrase>
@@ -12232,16 +12226,13 @@
   desc: in Settings -> General -> System -> USB Mode: Android Debug Bridge
   user: core
   <source>
-    *: none
-    ibassodx50,ibassodx90: "Android Debug Bridge"
+    *: "Android Debug Bridge"
   </source>
   <dest>
-    *: none
-    ibassodx50,ibassodx90: "Pont de débogage Android"
+    *: "Pont de débogage Android"
   </dest>
   <voice>
-    *: none
-    ibassodx50,ibassodx90: "Pont de débogage Android"
+    *: "Pont de débogage Android"
   </voice>
 </phrase>
 <phrase>
@@ -12294,16 +12285,13 @@
   desc: in Settings -> General -> System -> USB Mode
   user: core
   <source>
-    *: none
-    ibassodx50,ibassodx90: "USB Mode"
+    *: "USB Mode"
   </source>
   <dest>
-    *: none
-    ibassodx50,ibassodx90: "Mode USB"
+    *: "Mode USB"
   </dest>
   <voice>
-    *: none
-    ibassodx50,ibassodx90: "Mode USB"
+    *: "Mode USB"
   </voice>
 </phrase>
 <phrase>

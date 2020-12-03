@@ -27,28 +27,23 @@ const static struct {
     SystemInfo::SystemInfos info;
     const char* name;
 } SystemInfosList[] = {
-    { SystemInfo::ManualUrl,            "manual_url"          },
-    { SystemInfo::BleedingUrl,          "bleeding_url"        },
-    { SystemInfo::BootloaderUrl,        "bootloader_url"      },
-    { SystemInfo::BootloaderInfoUrl,    "bootloader_info_url" },
-    { SystemInfo::ReleaseFontUrl,       "release_font_url"    },
-    { SystemInfo::DailyFontUrl,         "daily_font_url"      },
-    { SystemInfo::DailyVoiceUrl,        "daily_voice_url"     },
-    { SystemInfo::ReleaseVoiceUrl,      "release_voice_url"   },
-    { SystemInfo::DoomUrl,              "doom_url"            },
-    { SystemInfo::Duke3DUrl,            "duke3d_url"          },
-    { SystemInfo::PuzzFontsUrl,         "puzzfonts_url"       },
-    { SystemInfo::QuakeUrl,             "quake_url"           },
-    { SystemInfo::Wolf3DUrl,            "wolf3d_url"          },
-    { SystemInfo::XWorldUrl,            "xworld_url"          },
-    { SystemInfo::ReleaseUrl,           "release_url"         },
-    { SystemInfo::CandidateUrl,         "rc_url"              },
-    { SystemInfo::DailyUrl,             "daily_url"           },
-    { SystemInfo::BuildInfoUrl,         "build_info_url"      },
-    { SystemInfo::GenlangUrl,           "genlang_url"         },
-    { SystemInfo::ThemesUrl,            "themes_url"          },
-    { SystemInfo::ThemesInfoUrl,        "themes_info_url"     },
-    { SystemInfo::RbutilUrl,            "rbutil_url"          },
+    { SystemInfo::ManualUrl,            ":build:/manual_url"      },
+    { SystemInfo::BuildUrl,             ":build:/build_url"       },
+    { SystemInfo::FontUrl,              ":build:/font_url"        },
+    { SystemInfo::VoiceUrl,             ":build:/voice_url"       },
+    { SystemInfo::BootloaderUrl,        "bootloader/download_url" },
+    { SystemInfo::BootloaderInfoUrl,    "bootloader/info_url"     },
+    { SystemInfo::DoomUrl,              "doom_url"                },
+    { SystemInfo::Duke3DUrl,            "duke3d_url"              },
+    { SystemInfo::PuzzFontsUrl,         "puzzfonts_url"           },
+    { SystemInfo::QuakeUrl,             "quake_url"               },
+    { SystemInfo::Wolf3DUrl,            "wolf3d_url"              },
+    { SystemInfo::XWorldUrl,            "xworld_url"              },
+    { SystemInfo::BuildInfoUrl,         "build_info_url"          },
+    { SystemInfo::GenlangUrl,           "genlang_url"             },
+    { SystemInfo::ThemesUrl,            "themes_url"              },
+    { SystemInfo::ThemesInfoUrl,        "themes_info_url"         },
+    { SystemInfo::RbutilUrl,            "rbutil_url"              },
 };
 
 const static struct {
@@ -56,18 +51,16 @@ const static struct {
     const char* name;
     const char* def;
 } PlatformInfosList[] = {
-    { SystemInfo::PlatformName,     ":platform:/name",      "" },
-    { SystemInfo::Manual,           ":platform:/manualname","rockbox-:platform:" },
-    { SystemInfo::BootloaderMethod, ":platform:/bootloadermethod", "none" },
-    { SystemInfo::BootloaderName,   ":platform:/bootloadername", "" },
-    { SystemInfo::BootloaderFile,   ":platform:/bootloaderfile", "" },
-    { SystemInfo::BootloaderFilter, ":platform:/bootloaderfilter", "" },
-    { SystemInfo::Encoder,          ":platform:/encoder",   "" },
-    { SystemInfo::Brand,            ":platform:/brand",     "" },
-    { SystemInfo::Name,             ":platform:/name",      "" },
-    { SystemInfo::BuildserverModel, ":platform:/buildserver_modelname", "" },
+    { SystemInfo::Manual,           ":platform:/manualname",        ":platform:" },
+    { SystemInfo::BootloaderMethod, ":platform:/bootloadermethod",  "none" },
+    { SystemInfo::BootloaderName,   ":platform:/bootloadername",    "" },
+    { SystemInfo::BootloaderFile,   ":platform:/bootloaderfile",    "" },
+    { SystemInfo::BootloaderFilter, ":platform:/bootloaderfilter",  "" },
+    { SystemInfo::Encoder,          ":platform:/encoder",           "" },
+    { SystemInfo::Brand,            ":platform:/brand",             "" },
+    { SystemInfo::Name,             ":platform:/name",              "" },
     { SystemInfo::ConfigureModel,   ":platform:/configure_modelname", "" },
-    { SystemInfo::PlayerPicture,    ":platform:/playerpic", "" },
+    { SystemInfo::PlayerPicture,    ":platform:/playerpic",         "" },
 };
 
 //! pointer to setting object to nullptr
@@ -84,7 +77,7 @@ void SystemInfo::ensureSystemInfoExists()
 }
 
 
-QVariant SystemInfo::value(enum SystemInfos info)
+QVariant SystemInfo::value(enum SystemInfos info, BuildType type)
 {
     ensureSystemInfoExists();
 
@@ -93,6 +86,20 @@ QVariant SystemInfo::value(enum SystemInfos info)
     while(SystemInfosList[i].info != info)
         i++;
     QString s = SystemInfosList[i].name;
+    switch(type) {
+    case BuildDaily:
+        s.replace(":build:", "daily");
+        break;
+    case BuildCurrent:
+        s.replace(":build:", "development");
+        break;
+    case BuildCandidate:
+        s.replace(":build:", "release-candidate");
+        break;
+    case BuildRelease:
+        s.replace(":build:", "release");
+        break;
+    }
     LOG_INFO() << "GET:" << s << systemInfos->value(s).toString();
     return systemInfos->value(s);
 }
@@ -150,7 +157,7 @@ QStringList SystemInfo::platforms(enum SystemInfo::PlatformType type, QString va
     return result;
 }
 
-QMap<QString, QStringList> SystemInfo::languages(void)
+QMap<QString, QStringList> SystemInfo::languages(bool namesOnly)
 {
     ensureSystemInfoExists();
 
@@ -159,7 +166,11 @@ QMap<QString, QStringList> SystemInfo::languages(void)
     QStringList a = systemInfos->childKeys();
     for(int i = 0; i < a.size(); i++)
     {
-        result.insert(a.at(i), systemInfos->value(a.at(i), "null").toStringList());
+        QStringList data = systemInfos->value(a.at(i), "null").toStringList();
+        if(namesOnly)
+            result.insert(data.at(0), QStringList(data.at(1)));
+        else
+            result.insert(a.at(i), data);
     }
     systemInfos->endGroup();
     return result;
@@ -200,7 +211,7 @@ QMap<int, QStringList> SystemInfo::usbIdMap(enum MapType type)
         int j = ids.size();
         while(j--) {
             QStringList l;
-            int id = ids.at(j).toInt(0, 16);
+            int id = ids.at(j).toInt(nullptr, 16);
             if(id == 0) {
                 continue;
             }

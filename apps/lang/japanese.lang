@@ -779,15 +779,15 @@
   user: core
   <source>
     *: none
-    recording_swcodec: "Mono Left + Right"
+    recording: "Mono Left + Right"
   </source>
   <dest>
     *: none
-    recording_swcodec: "モノラル (左右)"
+    recording: "モノラル (左右)"
   </dest>
   <voice>
     *: none
-    recording_swcodec: "モノラル 左右"
+    recording: "モノラル 左右"
   </voice>
 </phrase>
 <phrase>
@@ -5327,15 +5327,15 @@
   user: core
   <source>
     *: none
-    recording_swcodec: "WavPack"
+    recording: "WavPack"
   </source>
   <dest>
     *: none
-    recording_swcodec: "WavPack"
+    recording: "WavPack"
   </dest>
   <voice>
     *: none
-    recording_swcodec: "ウェーブパック"
+    recording: "ウェーブパック"
   </voice>
 </phrase>
 <phrase>
@@ -5378,15 +5378,15 @@
   user: core
   <source>
     *: none
-    recording_swcodec: "Bitrate"
+    recording: "Bitrate"
   </source>
   <dest>
     *: none
-    recording_swcodec: "ビットレート"
+    recording: "ビットレート"
   </dest>
   <voice>
     *: none
-    recording_swcodec: "ビットレート"
+    recording: "ビットレート"
   </voice>
 </phrase>
 <phrase>
@@ -10706,15 +10706,15 @@
   user: core
   <source>
     *: none
-    recording_swcodec: "Mono mode"
+    recording: "Mono mode"
   </source>
   <dest>
     *: none
-    recording_swcodec: "モノラル"
+    recording: "モノラル"
   </dest>
   <voice>
     *: none
-    recording_swcodec: "モノラル"
+    recording: "モノラル"
   </voice>
 </phrase>
 <phrase>
@@ -12589,16 +12589,13 @@
   desc: in Settings -> General -> System -> USB Mode: Charge Only
   user: core
   <source>
-    *: none
-    ibassodx50,ibassodx90: "Charge Only"
+    *: "Charge Only"
   </source>
   <dest>
-    *: none
-    ibassodx50,ibassodx90: "充電のみ"
+    *: "充電のみ"
   </dest>
   <voice>
-    *: none
-    ibassodx50,ibassodx90: "充電のみ"
+    *: "充電のみ"
   </voice>
 </phrase>
 <phrase>
@@ -12606,16 +12603,13 @@
   desc: in Settings -> General -> System -> USB Mode
   user: core
   <source>
-    *: none
-    ibassodx50,ibassodx90: "USB Mode"
+    *: "USB Mode"
   </source>
   <dest>
-    *: none
-    ibassodx50,ibassodx90: "USBモード"
+    *: "USBモード"
   </dest>
   <voice>
-    *: none
-    ibassodx50,ibassodx90: "USBモード"
+    *: "USBモード"
   </voice>
 </phrase>
 <phrase>
@@ -12724,16 +12718,13 @@
   desc: in Settings -> General -> System -> USB Mode: Mass Storage
   user: core
   <source>
-    *: none
-    ibassodx50,ibassodx90: "Mass Storage"
+    *: "Mass Storage"
   </source>
   <dest>
-    *: none
-    ibassodx50,ibassodx90: "マス・ストレージ"
+    *: "マス・ストレージ"
   </dest>
   <voice>
-    *: none
-    ibassodx50,ibassodx90: "マス・ストレージ"
+    *: "マス・ストレージ"
   </voice>
 </phrase>
 <phrase>
@@ -12873,16 +12864,13 @@
   desc: in Settings -> General -> System -> USB Mode: Android Debug Bridge
   user: core
   <source>
-    *: none
-    ibassodx50,ibassodx90: "Android Debug Bridge"
+    *: "Android Debug Bridge"
   </source>
   <dest>
-    *: none
-    ibassodx50,ibassodx90: "Android Debug Bridge"
+    *: "Android Debug Bridge"
   </dest>
   <voice>
-    *: none
-    ibassodx50,ibassodx90: "Android Debug Bridge"
+    *: "Android Debug Bridge"
   </voice>
 </phrase>
 <phrase>

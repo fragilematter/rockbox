@@ -34,15 +34,21 @@ class SystemInfo : public QObject
             MapIncompatible,
         };
 
+        enum BuildType {
+            BuildCurrent,
+            BuildDaily,
+            BuildRelease,
+            BuildCandidate
+        };
+
         //! All system settings
         enum SystemInfos {
+            BuildUrl,
+            FontUrl,
+            VoiceUrl,
             ManualUrl,
-            BleedingUrl,
             BootloaderUrl,
             BootloaderInfoUrl,
-            DailyUrl,
-            DailyFontUrl,
-            DailyVoiceUrl,
             DoomUrl,
             Duke3DUrl,
             QuakeUrl,
@@ -50,9 +56,6 @@ class SystemInfo : public QObject
             Wolf3DUrl,
             XWorldUrl,
             ReleaseUrl,
-            CandidateUrl,
-            ReleaseVoiceUrl,
-            ReleaseFontUrl,
             BuildInfoUrl,
             GenlangUrl,
             ThemesUrl,
@@ -61,7 +64,6 @@ class SystemInfo : public QObject
         };
 
         enum PlatformInfo {
-            PlatformName,
             Manual,
             BootloaderMethod,
             BootloaderName,
@@ -70,7 +72,6 @@ class SystemInfo : public QObject
             Encoder,
             Brand,
             Name,
-            BuildserverModel,
             ConfigureModel,
             PlayerPicture,
         };
@@ -87,12 +88,13 @@ class SystemInfo : public QObject
         //! return a list of all platforms (rbutil internal names)
         static QStringList platforms(enum PlatformType type = PlatformAll,
                                      QString variant="");
-        //! returns a map of all languages
-        static QMap<QString, QStringList> languages(void);
+        //! returns a map of all languages.
+        //! Maps <language code> to (<language name>, <display name>)
+        static QMap<QString, QStringList> languages(bool namesOnly = false);
         //! returns a map of usb-ids and their targets
         static QMap<int, QStringList> usbIdMap(enum MapType type);
         //! get a value from system settings
-        static QVariant value(enum SystemInfos info);
+        static QVariant value(enum SystemInfos info, BuildType type = BuildCurrent);
         //! get a value from system settings for a named platform.
         static QVariant platformValue(enum PlatformInfo info, QString platform = "");
 

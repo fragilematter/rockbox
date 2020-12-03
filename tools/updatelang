@@ -57,17 +57,22 @@ sub parselangfile {
 	    }
 	} elsif ($pos ne 'phrase' && $line =~ /^([^:]+): ?\"?([^\"]*)\"?$/) {
 	    my @targets = split(',', $1);
+	    my $w = $2;
+
 	    foreach (@targets) {
 		my $l = trim($_);
-
-		# Strip out some keys
-#		if ($l eq "swcodec") {
+		# Convert some obsolete keys
+		if ($l eq "swcodec") {
+		    $l = "*";
+		} elsif ($l eq "lcd_bitmap") {
+		    $l = "*";
+		} elsif ($l eq "recording_swcodec") {
+		    $l = "recording";
+#		} elsif ($id =~ /USB_MODE/ && $l =~ /ibassodx/) {
 #		    $l = "*";
-#		} elsif ($l eq "lcd_bitmap") {
-#		    $l = "*";
-#		}
+		}
 
-		$thisphrase{$pos}->{$l} = $2;
+		$thisphrase{$pos}->{$l} = $w;
 	    }
 	}
 	if ($line eq '</voice>' ||
